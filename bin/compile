@@ -54,7 +54,6 @@ for map in $(find ./.next ./components -name '*.js' -not -path './node_modules/*
         next_id=$(cat "./.next/BUILD_ID")
         next_path="~/_next/$next_id/"
         name="${name/"/app/.next/dist/bundles/"/$next_path}"
-        echo "name: ${name}"
     fi
 
     res=($(${JQ} -r ". | map(select(.name == \"${name}\")) | first | .id + \" \" + (.sha1 // \"\")" "${files}"))
