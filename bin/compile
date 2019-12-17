@@ -54,7 +54,7 @@ for map in $(find . -name '*.js.map' -not -path './node_modules/*' -not -path '.
         next_id=$(cat "./.next/BUILD_ID")
         next_path="~/_next/$next_id/"
         # Adding app/ to line below for our heroku stack
-        name="${name/"~/app/.next/dist/bundles/"/$next_path}"
+        name="${name/"/app/.next/dist/bundles/"/$next_path}"
     fi
 
     res=($(${JQ} -r ". | map(select(.name == \"${name}\")) | first | .id + \" \" + (.sha1 // \"\")" "${files}"))
